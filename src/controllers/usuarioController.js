@@ -22,13 +22,12 @@ class UsuarioController{
                return res.status(422).json({ message: 'Senha inválida!'});
           }
 
-          const secret = process.env.secret
-          const token = jwt.sign({
-               id: user._id
-          },
-          secret,)
-          return res.status(200).json({ message: ' connectado',
-     token});
+          // const secret = process.env.secret
+          // const token = jwt.sign({
+          //      id: user._id
+          // },
+          // secret,)
+          return res.status(200).json({ message: ' connectado'});
      }catch(erro){
           return res.status(500).json({ message: `${erro.message} - Falha no servidor`});
      }
