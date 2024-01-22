@@ -1,6 +1,6 @@
 import express from "express";
-import connnectDB from "../config/dbConnect.js";
-import routes from "../routes/index.js";
+import connnectDB from "./src/config/dbConnect.js";
+import routes from "./src/routes/index.js";
 
 const conexao = await connnectDB();
 
