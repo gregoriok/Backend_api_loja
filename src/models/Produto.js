@@ -6,7 +6,8 @@ const produtoSchema = new mongoose.Schema({
     nome: {type: String, required: true},
     preco: {type: Number, required: true},
     tamanho: {type: String, required: true},
-    imagem: {type: String, required: true}
+    imagem: {filename: String,
+        Path: String}
 }, {versionKey: false}
 );
 

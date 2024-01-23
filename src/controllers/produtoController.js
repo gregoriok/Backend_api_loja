@@ -1,5 +1,6 @@
 import produto  from "../models/Produto.js";
 
+
 class ProdutoController{
 
 //MÉTODOS GET
@@ -25,7 +26,14 @@ class ProdutoController{
 //MÉTODOS POST
     static async cadastrarProduto(req, res){
         try{
-            const novoProduto = await produto.create(req.body);
+            const produtocadastrar = req.body;
+
+            const imagem = {
+                filename: req.file.filename,
+                path: req.file.path,
+            };
+            produtocadastrar.imagem = imagem
+            const novoProduto = await produto.create(produtocadastrar);
             res.status(201).json({
                 message: "Criado com Sucesso",
                 produto: novoProduto});
