@@ -27,13 +27,14 @@ class ProdutoController{
     static async cadastrarProduto(req, res){
         try{
             const produtocadastrar = req.body;
-
             const imagem = {
                 filename: req.file.filename,
                 path: req.file.path,
             };
             produtocadastrar.imagem = imagem
+            console.log(produtocadastrar)
             const novoProduto = await produto.create(produtocadastrar);
+            console.log(novoProduto)
             res.status(201).json({
                 message: "Criado com Sucesso",
                 produto: novoProduto});
@@ -45,6 +46,8 @@ class ProdutoController{
 
 ///MÉTODOS PUT
     static async atualizarProduto(req, res){
+        console.log(req.params.id)
+        console.log(req.body)
         try{
             let id = req.params.id;
             await produto.findByIdAndUpdate(id, req.body);
