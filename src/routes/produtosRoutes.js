@@ -27,6 +27,6 @@ routes.get("/produtos", ProdutoController.listarprodutos);
 routes.get("/produtos/:id", ProdutoController.buscarProduto);
 routes.post("/produtos", upload.single('imagem'), ProdutoController.cadastrarProduto);
 routes.put("/produtos/:id",upload.none(), ProdutoController.atualizarProduto);
-routes.delete("/produtos/:id", upload.none(),ProdutoController.excluirProduto);
+routes.delete("/produtos/:id",ProdutoController.excluirProduto);
 
 export default routes;

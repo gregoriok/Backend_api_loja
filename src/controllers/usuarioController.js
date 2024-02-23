@@ -22,7 +22,7 @@ class UsuarioController{
                return res.status(422).json({ message: 'Senha inválida!'});
           }
 
-          const secret = process.env.secret
+          const secret = process.env.SECRET
           const token = jwt.sign({
                id: user._id
           },
