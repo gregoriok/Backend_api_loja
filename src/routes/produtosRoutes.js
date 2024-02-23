@@ -26,7 +26,7 @@ const routes = express.Router()
 routes.get("/produtos", ProdutoController.listarprodutos);
 routes.get("/produtos/:id", ProdutoController.buscarProduto);
 routes.post("/produtos", upload.single('imagem'), ProdutoController.cadastrarProduto);
-routes.put("/produtos/:id",upload.single('imagem'),upload.none(), ProdutoController.atualizarProduto);
+routes.put("/produtos/:id",upload.single('imagem'), ProdutoController.atualizarProduto);
 routes.delete("/produtos/:id",ProdutoController.excluirProduto);
 
 export default routes;

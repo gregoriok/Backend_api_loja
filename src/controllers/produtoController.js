@@ -46,14 +46,19 @@ class ProdutoController{
     static async atualizarProduto(req, res){
         try{
             let id = req.params.id;
-            const imagem = {
+            const imagem = req.file ? {
                 filename: req.file.filename,
                 path: req.file.path,
-            };
-            req.body.imagem = imagem
-            await produto.findByIdAndUpdate(id, req.body);
+            } : undefined;
+    
+            // Se uma nova imagem foi enviada, incluir no corpo da requisição
+            if (imagem) {
+                req.body.imagem = imagem;
+            }
+            await produto.findByIdAndUpdate(id,req.body);
             res.status(200).json({message: "Produto atualizado com sucesso"});
         }catch(erro){
+            console.log(erro)
             res.status.json({ message: `${erro.message} - Falha na atualização do produto`});
         }
     }
