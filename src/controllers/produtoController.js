@@ -32,9 +32,7 @@ class ProdutoController{
                 path: req.file.path,
             };
             produtocadastrar.imagem = imagem
-            console.log(produtocadastrar)
             const novoProduto = await produto.create(produtocadastrar);
-            console.log(novoProduto)
             res.status(201).json({
                 message: "Criado com Sucesso",
                 produto: novoProduto});
@@ -46,10 +44,13 @@ class ProdutoController{
 
 ///MÉTODOS PUT
     static async atualizarProduto(req, res){
-        console.log(req.params.id)
-        console.log(req.body)
         try{
             let id = req.params.id;
+            const imagem = {
+                filename: req.file.filename,
+                path: req.file.path,
+            };
+            req.body.imagem = imagem
             await produto.findByIdAndUpdate(id, req.body);
             res.status(200).json({message: "Produto atualizado com sucesso"});
         }catch(erro){
